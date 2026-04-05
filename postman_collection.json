@@ -1,0 +1,19 @@
+{
+  "info": {
+    "name": "E-Waste Management APIs (RBAC)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {"name":"Register User","request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"url":"{{baseUrl}}/auth/register","body":{"mode":"raw","raw":"{\n  \"name\": \"Alice\",\n  \"email\": \"alice@example.com\",\n  \"password\": \"StrongPass123\",\n  \"phone\": \"+1-555-2000\",\n  \"address\": \"742 Evergreen Terrace\",\n  \"role\": \"USER\"\n}"}}},
+    {"name":"Register Local Admin","request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"url":"{{baseUrl}}/auth/register","body":{"mode":"raw","raw":"{\n  \"name\": \"NGO Applicant\",\n  \"email\": \"ngo@apply.com\",\n  \"password\": \"StrongPass123\",\n  \"phone\": \"+1-555-2010\",\n  \"address\": \"NGO Street\",\n  \"role\": \"LOCAL_ADMIN\",\n  \"location\": \"Chicago\"\n}"}}},
+    {"name":"Login","request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"url":"{{baseUrl}}/auth/login","body":{"mode":"raw","raw":"{\n  \"email\": \"john@example.com\",\n  \"password\": \"password\"\n}"}}},
+    {"name":"Create Request","request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"url":"{{baseUrl}}/requests","body":{"mode":"raw","raw":"{\n  \"deviceType\": \"Laptop\",\n  \"quantity\": 2,\n  \"description\": \"Old office laptops\",\n  \"pickupAddress\": \"742 Evergreen Terrace\",\n  \"location\": \"New York\",\n  \"pickupDate\": \"2026-04-10\"\n}"}}},
+    {"name":"User Requests","request":{"method":"GET","url":"{{baseUrl}}/user/requests?page=0&size=10"}},
+    {"name":"Local Admin Requests","request":{"method":"GET","url":"{{baseUrl}}/admin/requests?status=PENDING&page=0&size=10"}},
+    {"name":"Local Admin Update Status","request":{"method":"PUT","header":[{"key":"Content-Type","value":"application/json"}],"url":"{{baseUrl}}/admin/request/1/status","body":{"mode":"raw","raw":"{\n  \"status\": \"COMPLETED\",\n  \"assignToMe\": true\n}"}}},
+    {"name":"SuperAdmin List Admins","request":{"method":"GET","url":"{{baseUrl}}/superadmin/admins?status=PENDING&page=0&size=10"}},
+    {"name":"SuperAdmin Approve Admin","request":{"method":"PUT","header":[{"key":"Content-Type","value":"application/json"}],"url":"{{baseUrl}}/superadmin/admin/3/approve","body":{"mode":"raw","raw":"{\n  \"location\": \"Los Angeles\"\n}"}}},
+    {"name":"SuperAdmin All Requests","request":{"method":"GET","url":"{{baseUrl}}/superadmin/all-requests?page=0&size=10"}}
+  ],
+  "variable": [{"key":"baseUrl","value":"http://localhost:8080"}]
+}
