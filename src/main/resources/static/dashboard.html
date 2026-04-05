@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<div class="container">
+    <div class="nav card"><h2>User Dashboard</h2><button id="logoutBtn" class="secondary" style="width:auto;">Logout</button></div>
+    <div id="msg"></div>
+
+    <div class="card">
+        <h3>Submit E-Waste Pickup Request</h3>
+        <form id="requestForm" class="grid-2">
+            <label>Device Type
+                <select name="deviceType" required>
+                    <option value="">Select</option><option>Mobile</option><option>Laptop</option><option>Battery</option><option>Tablet</option><option>Printer</option><option>Other</option>
+                </select>
+            </label>
+            <label>Quantity<input type="number" name="quantity" required min="1" max="1000"></label>
+            <label>Location (City/Area)<input type="text" name="location" required maxlength="80"></label>
+            <label>Preferred Pickup Date<input type="date" name="pickupDate" required></label>
+            <label style="grid-column:1/-1;">Description<textarea name="description" maxlength="1000"></textarea></label>
+            <label style="grid-column:1/-1;">Pickup Address<textarea name="pickupAddress" required maxlength="255"></textarea></label>
+            <div style="grid-column:1/-1;"><button type="submit">Submit Request</button></div>
+        </form>
+    </div>
+
+    <div class="card">
+        <h3>My Requests</h3>
+        <table class="table">
+            <thead><tr><th>ID</th><th>Device</th><th>Location</th><th>Date</th><th>Status</th></tr></thead>
+            <tbody id="requestsBody"></tbody>
+        </table>
+    </div>
+</div>
+<script src="/js/api.js"></script>
+<script src="/js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Admin Dashboard</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<div class="container">
+    <div class="nav card"><h2>Super Admin Dashboard</h2><button id="logoutBtn" class="secondary" style="width:auto;">Logout</button></div>
+    <div id="msg"></div>
+
+    <div class="card"><h3>Global Analytics</h3><div id="analytics"></div></div>
+
+    <div class="card">
+        <h3>Local Admin Applications</h3>
+        <table class="table">
+            <thead><tr><th>ID</th><th>Name</th><th>Email</th><th>Status</th><th>Location</th><th>Action</th></tr></thead>
+            <tbody id="adminsBody"></tbody>
+        </table>
+    </div>
+
+    <div class="card">
+        <h3>All Requests</h3>
+        <div class="grid-2">
+            <label>Status
+                <select id="statusFilter"><option value="">All</option><option value="PENDING">Pending</option><option value="APPROVED">Approved</option><option value="COMPLETED">Completed</option><option value="REJECTED">Rejected</option></select>
+            </label>
+            <label>Location<input type="text" id="locationFilter" placeholder="city/area"></label>
+        </div>
+        <button id="filterBtn" style="width:auto;">Apply Filter</button>
+        <table class="table">
+            <thead><tr><th>ID</th><th>User</th><th>Location</th><th>Status</th><th>Override</th></tr></thead>
+            <tbody id="requestsBody"></tbody>
+        </table>
+    </div>
+</div>
+<script src="/js/api.js"></script>
+<script src="/js/super-admin.js"></script>
+</body>
+</html>
